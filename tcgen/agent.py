@@ -263,4 +263,5 @@ class CaseGenerationAgent:
             "llm_status": self.c.llm_status,
             "ml_mode": self.c.ml.mode,
             "ml_note": self.c.ml.error,
+            "fallback_used": any("failed" in t["observation"] for t in s.trace),
         }
