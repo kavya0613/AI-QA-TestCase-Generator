@@ -37,6 +37,8 @@ with st.sidebar:
 
 def render(result: dict, key: str):
     m, c = result["metrics"], result["classification"]
+    if result.get("fallback_used"):
+        st.warning("The LLM call failed for this run, so offline templates were used. See the Agent trace for the reason.")
     st.subheader("Story analysis")
     a, b, d, e = st.columns(4)
     a.metric("Category", c["category"], f'{c["category_confidence"]:.0%} confidence')
